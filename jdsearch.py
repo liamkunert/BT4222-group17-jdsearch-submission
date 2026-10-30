@@ -30,8 +30,11 @@ WORK_FOLDER = "BT4222-G17-JDsearch"  # working folder in the runner's Google Dri
 # Public, read-only Google Drive folder with the raw data and every artefact of our reference run. Missing inputs
 # are downloaded from it by file ID (path relative to the working folder -> Drive file ID). Filled in after the
 # reference run; the raw files are needed by notebooks 01-03, 04b and 05b.
-PUBLIC_FOLDER = ""
-PUBLIC_FILES = {}
+PUBLIC_FOLDER = "https://drive.google.com/drive/folders/1PGXci7tvDOh4Wh2HX0VPUO5cl_pAJNSN"
+PUBLIC_FILES = {
+    "data/user_behavior_data.txt": "1Vefw_BZ9qvVVEsveBdnfb7o3m3NRX7oH",
+    "data/product_meta_data.txt": "1BYpLJIFCf3zpr1bd5UCqkSAoLDu6xwfn",
+}
 IN_COLAB = "google.colab" in sys.modules
 REPO_ROOT = Path(__file__).resolve().parent
 
