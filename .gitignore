@@ -1,0 +1,14 @@
+# Local working folder (raw data, features, models, outputs); on Colab this lives in Google Drive
+/run/
+
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
