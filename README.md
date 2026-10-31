@@ -4,20 +4,20 @@ JD shows a shopper about 89 products for a search. We **re-rank that list** usin
 
 ## Results
 
-NDCG@10 on `validation_clean` (18,844 validation searches; complete candidate lists, linear gains 0-3, exact under random tie-breaking). Models trained on all clean training searches. Test results: notebook 07.
+NDCG@10 on `validation_clean` (18,844 validation searches) and `test_clean` (18,818 test searches, evaluated once in notebook 07): complete candidate lists, linear gains 0-3, exact under random tie-breaking. Models trained on all clean training searches.
 
-| Ranking | NDCG@10 |
-|---|---:|
-| Random order | 0.084 |
-| Team 3 (prior baseline), re-implemented on our protocol (all validation searches) | 0.151 |
-| Lagged history popularity (untrained, deployable) | 0.337 |
-| LambdaMART base: query length, query-title relevance, lagged popularity | 0.350 |
-| Untrained rule: shopper's own products first, then the base | 0.384 |
-| **M1: base + four pooled history match counts** | **0.389** |
-| M3: history split by action type and age | 0.390 |
-| **M1 + item-item collaborative features (final LambdaMART)** | **0.392** |
-| Feature MLP (same inputs as M1 + CF) | 0.389 |
-| History attention over the last 50 events (regularised) | 0.387 |
+| Ranking | Validation | Test |
+|---|---:|---:|
+| Random order | 0.084 | 0.084 |
+| Team 3 (prior baseline), re-implemented on our protocol (all validation searches) | 0.183 | - |
+| Lagged history popularity (untrained, deployable) | 0.337 | 0.338 |
+| LambdaMART base: query length, query-title relevance, lagged popularity | 0.350 | 0.350 |
+| Untrained rule: shopper's own products first, then the base | 0.384 | 0.382 |
+| **M1: base + four pooled history match counts** | **0.389** | **0.385** |
+| M3: history split by action type and age | 0.390 | 0.388 |
+| **M1 + item-item collaborative features (final LambdaMART)** | **0.392** | **0.389** |
+| Feature MLP (same inputs as M1 + CF) | 0.389 | 0.387 |
+| History attention over the last 50 events (regularised) | 0.387 | 0.386 |
 
 ## Pipeline
 
@@ -30,7 +30,7 @@ Run the notebooks in order. Each one starts with the same setup cell: on Colab i
 | `03_features` | 97 features in 13 groups for all splits (relevance, popularity, personal history, context, query history), plus a 10-minute history safety-gap version | CPU (high RAM), ~45 min | `processed/features_v3_*` |
 | `04_baselines` | Untrained single-signal references; Team 3's evaluation protocol applied to known rankings | CPU, ~5 min | `results.csv` |
 | `04b_team3_prep` | Inputs for our re-implementation of Team 3's model (the prior baseline) | CPU, ~20 min | `processed/team3/` |
-| `04c_team3_ladder` | Team 3's model re-implemented and corrected one flaw at a time | T4 GPU, ~45 min | `processed/team3/ladder_*`, `results.csv` |
+| `04c_team3_ladder` | Team 3's model re-implemented and corrected one flaw at a time | T4 GPU, ~1.5 h | `processed/team3/ladder_*`, `results.csv` |
 | `05_lambdamart` | LambdaMART: base, ablations, item-item collaborative features, final models on all training searches, robustness and sensitivity checks; test scores (no labels) | CPU (high RAM), ~3-4 h | `processed/models/`, `processed/cf/`, `processed/neural/lambdamart_validation_scores.parquet`, `processed/test/` |
 | `05b_neural` | Feature MLP and three history-attention variants; test scores (no labels) | T4 GPU (high RAM), ~15 min | `processed/neural/`, `processed/test/` |
 | `06_diagnostics` | Personal gain by segment, wins and losses, own-history / warm / cold candidates, report figures | CPU, ~5 min | `outputs/diagnostics/` |
