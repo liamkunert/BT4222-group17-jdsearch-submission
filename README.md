@@ -46,7 +46,7 @@ Every evaluated ranking is written to `results.csv` in the working folder (noteb
 
 ## Data
 
-- **Raw data** (`user_behavior_data.txt`, `product_meta_data.txt`) and **all intermediate and final artefacts** of our run (split, features, CF features, models, scores, results, figures) are in the public Google Drive folder: *link to be added after the reference run*.
+- **Raw data** (`user_behavior_data.txt`, `product_meta_data.txt`) and **all intermediate and final artefacts** of our run (split, features, CF features, models, scores, results, figures) are in the public Google Drive folder [BT4222-G17-JDsearch](https://drive.google.com/drive/folders/1PGXci7tvDOh4Wh2HX0VPUO5cl_pAJNSN) (read-only, same layout as the working folder).
 - The raw data is not stored in this repository.
 
 ## Repository

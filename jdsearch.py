@@ -28,12 +28,34 @@ import pandas as pd
 REPO_URL = "https://github.com/liamkunert/BT4222-group17-jdsearch-submission.git"
 WORK_FOLDER = "BT4222-G17-JDsearch"  # working folder in the runner's Google Drive (Colab)
 # Public, read-only Google Drive folder with the raw data and every artefact of our reference run. Missing inputs
-# are downloaded from it by file ID (path relative to the working folder -> Drive file ID). Filled in after the
-# reference run; the raw files are needed by notebooks 01-03, 04b and 05b.
+# are downloaded from it by file ID (path relative to the working folder -> Drive file ID): every file a notebook
+# reads, so each notebook can also run on its own.
 PUBLIC_FOLDER = "https://drive.google.com/drive/folders/1PGXci7tvDOh4Wh2HX0VPUO5cl_pAJNSN"
 PUBLIC_FILES = {
     "data/user_behavior_data.txt": "1Vefw_BZ9qvVVEsveBdnfb7o3m3NRX7oH",
     "data/product_meta_data.txt": "1BYpLJIFCf3zpr1bd5UCqkSAoLDu6xwfn",
+    "processed/search_table.parquet": "1GujuMtxsFwWhzRp_t2AnuoebNmyVys76",
+    "processed/split_v1.csv": "1nuRIItA_23jQOOwORB9uoz3zs9sKm5Y4",
+    "processed/features_v3_meta.json": "1JypWkB4HgJflJS8CFpZopuLQXUBNHanL",
+    "processed/features_v3_train_dev.parquet": "1GyTzsb21EacpEhDYExsHb6wAhOVhKnu0",
+    "processed/features_v3_train_rest.parquet": "1JHq6DuJJc8CU9b_oFji1NL18Ki2y-y8V",
+    "processed/features_v3_validation.parquet": "11y5t-OD53UWPrnY-7YApMThUXaBZLkJq",
+    "processed/features_v3_test.parquet": "1xFpA7zRkqqDwBC0RYCMFk2qtwgSdqwxB",
+    "processed/features_v3_minage0.00694444d_meta.json": "1zsA26-IbYfXAdCjNzvj3IZHMetz7FZST",
+    "processed/features_v3_minage0.00694444d_train_dev.parquet": "1_z9c4Vvy7dRHohHH2aaf_XzLHk2P7vCr",
+    "processed/features_v3_minage0.00694444d_validation.parquet": "1C7LGPhEhtjWffcbrOxyOyF3s1oJ8XW8e",
+    "processed/cf/cf1_train_dev.parquet": "1spjJ_5-XdvCUl2MpK-aTSzpqBqjiD87S",
+    "processed/cf/cf1_train_rest.parquet": "1vYrP7VyrASap0k-Jh2_wp6JFoNqxFuck",
+    "processed/cf/cf1_validation.parquet": "1cAFbD1k7SogOGiigxgDV35I6aUvsURXp",
+    "processed/cf/cf1_test.parquet": "1zn4AR8SKra6h-DEHWPHJbRmdg9piPDCM",
+    "processed/team3/train_dev.npz": "16xMjklOJB4URU3BrulBbV1sECLnitimm",
+    "processed/team3/validation.npz": "1-769HZlJfh0J0qh-jsztcHK8FnEI4ebz",
+    "processed/team3/lookups.npz": "1n6LjML35vX2xeIjff9gT4khybQEc1kwR",
+    "processed/team3/meta.json": "13YfQujy1zH12tQ7VhOqHHDK6cMbYtH24",
+    "processed/neural/lambdamart_validation_scores.parquet": "1kFvuyI0s9swtPow7DDiSpI22KEkpnIAq",
+    "processed/test/lambdamart_test_scores.parquet": "1HqCk0X12WxmIWJVfKTfTaKyPZg8uG25m",
+    "processed/test/neural_test_scores.parquet": "1Bq7WwAzRHghgZoaolqDAOyOPYxs7ho5k",
+    "results.csv": "1Qe7ivomV2ZRMc7DEW8H23LTm9n35iD4V",
 }
 IN_COLAB = "google.colab" in sys.modules
 REPO_ROOT = Path(__file__).resolve().parent
