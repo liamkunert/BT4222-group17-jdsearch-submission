@@ -28,8 +28,8 @@ import pandas as pd
 REPO_URL = "https://github.com/liamkunert/BT4222-group17-jdsearch-submission.git"
 WORK_FOLDER = "BT4222-G17-JDsearch"  # working folder in the runner's Google Drive (Colab)
 # Public, read-only Google Drive folder with the raw data and every artefact of our reference run. Missing inputs
-# are downloaded from it by file ID (path relative to the working folder -> Drive file ID): every file a notebook
-# reads, so each notebook can also run on its own.
+# are downloaded from it by file ID (path relative to the working folder -> Drive file ID): the inputs of each
+# notebook except files written earlier in the same run (see the README).
 PUBLIC_FOLDER = "https://drive.google.com/drive/folders/1PGXci7tvDOh4Wh2HX0VPUO5cl_pAJNSN"
 PUBLIC_FILES = {
     "data/user_behavior_data.txt": "1Vefw_BZ9qvVVEsveBdnfb7o3m3NRX7oH",
@@ -429,7 +429,7 @@ def log_result(paths, notebook, step, model, split, per_search, notes=""):
 def read_results(paths):
     """The run's results table (empty if nothing is logged yet)."""
     if Path(paths.results).is_file():
-        return pd.read_csv(paths.results)
+        return pd.read_csv(paths.results, dtype={"notebook": str})
     return pd.DataFrame(columns=RESULT_COLUMNS)
 
 

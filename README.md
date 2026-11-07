@@ -40,7 +40,7 @@ Every evaluated ranking is written to `results.csv` in the working folder (noteb
 
 **Running on Colab.** Open a notebook from GitHub (*File > Open notebook > GitHub*, repository `liamkunert/BT4222-group17-jdsearch-submission`), choose the runtime from the table and *Run all*. Notebook 05 caches every trained model in the working folder, so after a disconnect a re-run continues where it stopped. Notebooks 04c and 05b fall back to a short smoke test without a GPU.
 
-**Running a single notebook.** Inputs that are missing from the working folder are downloaded from the public data folder (see Data), so any notebook can also be run on its own.
+**Running a single notebook.** Inputs that are missing from the working folder are downloaded from the public data folder (see Data), so most notebooks can also be run on their own. Notebooks 05 and 06 also read files that earlier notebooks of the same run write (05: `results.csv` from 04; 06: the neural outputs of 05b), so run those first.
 
 **Running locally.** Python 3.12 and `pip install -r requirements.txt`; the working folder is `./run/` (or the folder in the `JDSEARCH_WORK` environment variable). The full pipeline needs about 16 GB of RAM.
 
